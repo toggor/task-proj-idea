@@ -93,19 +93,27 @@ export default class App extends Component{
         })
     }
 
-    searchPost(items, term){
-        if(term.length === 0){
-            return items
-        }
-
-        items.filter((item)=>{
-            return item.label.indexOf(term) > -1
-        });
-    }
 
     onUpdateSearch(term){
         this.setState({term});
     }
+
+    searchPost(items, term){
+        console.log(`received term ${term}`);
+
+        if(term.length === 0){
+            return items
+        };
+
+        return items.filter((item)=>{
+
+            console.log(item.label.indexOf(term) > -1);
+            return item.label.indexOf(term) > -1;
+        });
+
+    }
+
+
 
     render() {
         const {data, term} = this.state;
